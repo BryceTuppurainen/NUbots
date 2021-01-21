@@ -6,6 +6,7 @@
 
 #include "message/behaviour/FixedWalkCommand.hpp"
 #include "message/motion/GetupCommand.hpp"
+#include "message/motion/KickCommand.hpp"
 #include "message/motion/KinematicsModel.hpp"
 #include "message/motion/ServoTarget.hpp"
 #include "message/motion/WalkCommand.hpp"
@@ -28,6 +29,7 @@ namespace motion {
     using message::motion::DisableWalkEngineCommand;
     using message::motion::EnableWalkEngineCommand;
     using message::motion::ExecuteGetup;
+    using message::motion::KickCommand;
     using message::motion::KillGetup;
     using message::motion::KinematicsModel;
     using message::motion::ServoTarget;
@@ -189,6 +191,10 @@ namespace motion {
                     calculateJointGoals();
                 }
             }
+        });
+
+        on<Trigger<KickCommand>>().then([this](const KickCommand& command) {
+            walk_engine.requestKick(false);  // true uses left leg
         });
     }
 
