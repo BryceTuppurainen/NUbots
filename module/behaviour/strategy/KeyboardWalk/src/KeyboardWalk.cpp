@@ -277,10 +277,12 @@ namespace behaviour {
             // std::string leg = (l == 1) ? "left" : "right";
             // emit(std::make_unique<message::motion::KickScriptCommand>(ks));
             message::motion::KickCommand kc;
+            kc.leg          = l;
+            std::string leg = (l == 1) ? "left" : "right";
 
             emit(std::make_unique<message::motion::KickCommand>(kc));
 
-            log<NUClear::INFO>("Kick.");
+            log<NUClear::INFO>("Kick", leg);
         }
 
         void KeyboardWalk::look_left() {

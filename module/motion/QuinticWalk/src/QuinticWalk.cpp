@@ -194,7 +194,8 @@ namespace motion {
         });
 
         on<Trigger<KickCommand>>().then([this](const KickCommand& command) {
-            walk_engine.requestKick(false);  // true uses left leg
+            bool leg = int(command.leg) == 0;
+            walk_engine.requestKick(leg);  // true uses left leg
         });
     }
 

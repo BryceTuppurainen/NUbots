@@ -21,6 +21,7 @@ syntax = "proto3";
 package message.motion;
 
 import "Vector.proto";
+import "message/motion/BodySide.proto";
 
 /**
  * TODO document
@@ -37,6 +38,7 @@ message KickCommand {
     vec3            target          = 1;  // The point to kick
     vec3            direction       = 2;  // force is the magnitude
     KickCommandType kickCommandType = 3;
+    BodySide        leg             = 4;  // Leg to kick with
 }
 
 /**
@@ -46,8 +48,8 @@ message KickCommand {
  * @author Brendan Annable
  */
 message KickScriptCommand {
-    vec3   direction = 1;  // Direction to kick with magnitude determining force
-    uint32 leg       = 2;  // Leg to kick with
+    vec3     direction = 1;  // Direction to kick with magnitude determining force
+    BodySide leg       = 2;  // Leg to kick with
 }
 
 message KickPlannerConfig {
