@@ -117,10 +117,13 @@ namespace motion {
                     pause_requested = false;
                     return false;
                 }
+                // If we have changed foot, see if we are on the correct foot to kick with, then kick
+                // Which foot is the support foot is updated after trajectories are calculated
+                // so we need to check if the support in code is the opposite of the real current support foot
                 else if (halfStepFinished
-                         && ((left_kick_requested && !foot_step.isLeftSupport())
-                             || (right_kick_requested && foot_step.isLeftSupport()))) {
-                    // lets do a kick
+                         && ((left_kick_requested && foot_step.isLeftSupport())
+                             || (right_kick_requested && !foot_step.isLeftSupport()))) {
+                    // Kick!
                     buildKickTrajectories(orders);
                     engine_state         = WalkEngineState::KICK;
                     left_kick_requested  = false;

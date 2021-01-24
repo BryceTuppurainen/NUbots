@@ -282,7 +282,7 @@ namespace behaviour {
 
             emit(std::make_unique<message::motion::KickCommand>(kc));
 
-            log<NUClear::INFO>("Kick", leg);
+            log<NUClear::INFO>("kick", leg);
         }
 
         void KeyboardWalk::look_left() {
