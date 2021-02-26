@@ -187,6 +187,10 @@ namespace behaviour {
                     case 'G':  // allows multiple gains to be edited at once
                         editGain();
                         break;
+                    case 'L':
+                        activateFrame(0);
+                        break;
+                        // activateFrame(0); - might be the reset way
                     case ':':  // lists commands
                         help();
                         break;
@@ -264,7 +268,7 @@ namespace behaviour {
 
 
             // Each Command
-            const char* COMMANDS[] = {",", ".", "N", "I", " ", "T", "J", "G", "P", "S"};
+            const char* COMMANDS[] = {",", ".", "N", "I", " ", "T", "J", "G", "P", "S", "L"};
 
             // Each Meaning
             const char* MEANINGS[] = {"Left a frame",
@@ -276,7 +280,8 @@ namespace behaviour {
                                       "Jump to Frame",
                                       "Change Gains",
                                       "Play",
-                                      "Save"};
+                                      "Save",
+                                      "Reset"};
 
             // Prints commands and their meanings to the screen
             for (size_t i = 0; i < 10; i = i + 2) {
