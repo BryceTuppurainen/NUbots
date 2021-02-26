@@ -190,7 +190,7 @@ namespace behaviour {
                     case 'L':
                         activateFrame(0);
                         break;
-                        // activateFrame(0); - might be the reset way
+                        // activateFrame(0); - Resets from frame 9 to 1
                     case ':':  // lists commands
                         help();
                         break;
@@ -268,7 +268,7 @@ namespace behaviour {
 
 
             // Each Command
-            const char* COMMANDS[] = {",", ".", "N", "I", " ", "T", "J", "G", "P", "S", "L"};
+            const char* COMMANDS[] = {",", ".", "N", "I", " ", "T", "J", "G", "P", "S", "L"};  // How do u include L?
 
             // Each Meaning
             const char* MEANINGS[] = {"Left a frame",
