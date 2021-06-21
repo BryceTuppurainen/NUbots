@@ -4,7 +4,7 @@ walk:
   freq: 0.7
   # Length of double support phase in half cycle
   # (ratio, [0:1])
-  double_support_ratio: 0.55
+  double_support_ratio: 0.45
   # Give extra swing to first step for better start
   # (in ?, [0:10])
   first_step_swing_factor: 0.8 #1.0
@@ -14,15 +14,15 @@ walk:
     distance: 0.28 #0.28
     # Maximum flying foot height
     # (in m, >= 0)
-    rise: 0.15 #0.1
+    rise: 0.1 #0.1
     # Pause of Z movement on highest point
     # (single support cycle ratio, [0,1])
-    z_pause: 0.08 #0.04
+    z_pause: 0.04 #0.04
     put_down:
       # Let the foot's downward trajectory end above the ground
       # this is helpful if the support leg bends
       # (in m, >= 0)
-      z_offset: 0.0
+      z_offset: 0.02
       # Phase time for moving the foot from Z offset to ground
       # (in half cycle ratio [0:1])
       phase: 0.4 # 0.5
@@ -45,7 +45,7 @@ walk:
     height: 0.45
     # Trunk pitch orientation
     # (in rad)
-    pitch: 24 * pi / 180 #28
+    pitch: 20 * pi / 180 #28
     # Phase offset of trunk oscillation
     # (half cycle phase, [-1:1])
     phase: 0.15
@@ -57,7 +57,7 @@ walk:
     y_offset: -0.01
     # Trunk lateral oscillation amplitude ratio
     # (ratio, >= 0)
-    swing: 0.03 #0.05
+    swing: 0.04 #0.05
     # Trunk swing pause length in phase at apex
     # (half cycle ratio, [0:1])
     pause: 0.1 #0
@@ -122,8 +122,8 @@ gains:
 
 arms:
   right_shoulder_pitch: 1.98
-  left_shoulder_pitch: 2.05
+  left_shoulder_pitch: 1.75
   right_shoulder_roll: -0.176
-  left_shoulder_roll: 0.135
+  left_shoulder_roll: 0.12
   right_elbow: -1.57
   left_elbow: -1.57
