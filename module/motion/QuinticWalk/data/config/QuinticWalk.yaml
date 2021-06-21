@@ -45,7 +45,7 @@ walk:
     height: 0.45
     # Trunk pitch orientation
     # (in rad)
-    pitch: 20 * pi / 180 #28
+    pitch: 24 * pi / 180 #28
     # Phase offset of trunk oscillation
     # (half cycle phase, [-1:1])
     phase: 0.15
@@ -57,7 +57,7 @@ walk:
     y_offset: -0.01
     # Trunk lateral oscillation amplitude ratio
     # (ratio, >= 0)
-    swing: 0.04 #0.05
+    swing: 0.03 #0.05
     # Trunk swing pause length in phase at apex
     # (half cycle ratio, [0:1])
     pause: 0.1 #0
@@ -122,8 +122,8 @@ gains:
 
 arms:
   right_shoulder_pitch: 1.98
-  left_shoulder_pitch: 1.75
+  left_shoulder_pitch: 1.85
   right_shoulder_roll: -0.176
-  left_shoulder_roll: 0.12
+  left_shoulder_roll: 0.135
   right_elbow: -1.57
   left_elbow: -1.57
