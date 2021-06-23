@@ -59,7 +59,7 @@ namespace module::localisation {
                 field->covariance      = filter.getCovariance();
 
                 if (config.debug) {
-                    log<NUClear::DEBUG>(fmt::format("Robot Location {} : {} : {}",
+                    log<NUClear::DEBUG>(fmt::format("Robot Location x {} : y {} : theta {}",
                                                     state[RobotModel<double>::kX],
                                                     state[RobotModel<double>::kY],
                                                     state[RobotModel<double>::kAngle]));
@@ -127,7 +127,7 @@ namespace module::localisation {
 
                     for (auto goal_post : goals.goals) {
                         if (goal_post.side == Goal::Side::UNKNOWN_SIDE) {
-                            log("This isn't handled yet :D");
+                            log<NUClear::INFO>("UNKNOWN_SIDE Goal posts aren't handled yet");
                         }
                     }
                 }
@@ -231,7 +231,7 @@ namespace module::localisation {
     Eigen::Vector3d RobotParticleLocalisation::getFieldPosition(const VisionGoal& goal,
                                                                 const message::support::FieldDescription& fd,
                                                                 const bool isOwn) const {
-        Eigen::Vector3d position;
+        Eigen::Vector3d position = Eigen::Vector3d::Zero();
 
         const bool left  = (goal.side == VisionGoal::Side::LEFT);
         const bool right = (goal.side == VisionGoal::Side::RIGHT);

@@ -23,10 +23,10 @@ namespace module::localisation {
         static constexpr int TIME_UPDATE_FREQUENCY = 10;
 
         struct {
-            bool debug;
+            bool debug = false;
             std::vector<Eigen::Vector3d> start_state{};
             Eigen::Vector3d start_variance{};
-        } config;
+        } config{};
 
         Eigen::Vector3d getFieldPosition(const message::vision::Goal& goal,
                                          const message::support::FieldDescription& fd,
