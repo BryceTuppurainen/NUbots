@@ -46,19 +46,20 @@ namespace module::vision {
     using message::vision::GreenHorizon;
 
     using utility::math::coordinates::cartesianToSpherical;
+    using utility::math::coordinates::inverseDistanceCartesianToSpherical;
     using utility::support::Expression;
 
     GoalDetector::GoalDetector(std::unique_ptr<NUClear::Environment> environment) : Reactor(std::move(environment)) {
 
         // Trigger the same function when either update
         on<Configuration>("GoalDetector.yaml").then([this](const Configuration& cfg) {
-            config.confidence_threshold = cfg["confidence_threshold"].as<float>();
-            config.cluster_points       = cfg["cluster_points"].as<int>();
-            config.disagreement_ratio   = cfg["disagreement_ratio"].as<float>();
-            config.goal_angular_cov     = Eigen::Vector3f(cfg["goal_angular_cov"].as<Expression>()).asDiagonal();
-            config.use_median           = cfg["use_median"].as<bool>();
-            config.max_goal_distance    = cfg["max_goal_distance"].as<float>();
-            config.debug                = cfg["debug"].as<bool>();
+            config.confidence_threshold       = cfg["confidence_threshold"].as<float>();
+            config.cluster_points             = cfg["cluster_points"].as<int>();
+            config.disagreement_ratio         = cfg["disagreement_ratio"].as<float>();
+            config.goal_projection_covariance = Eigen::Vector3f(cfg["goal_projection_covariance"].as<Expression>());
+            config.use_median                 = cfg["use_median"].as<bool>();
+            config.max_goal_distance          = cfg["max_goal_distance"].as<float>();
+            config.debug                      = cfg["debug"].as<bool>();
         });
 
         on<Trigger<GreenHorizon>, With<FieldDescription>, Buffer<2>>().then(
@@ -227,10 +228,12 @@ namespace module::vision {
                             // Attach the measurement to the object (distance from camera to bottom center of post)
                             g.measurements.push_back(Goal::Measurement());
                             g.measurements.back().type = Goal::MeasurementType::CENTRE;
-                            g.measurements.back().position =
-                                cartesianToSpherical(Eigen::Vector3f(g.post.bottom * distance));
-                            g.measurements.back().covariance =
-                                config.goal_angular_cov * Eigen::Vector3f(distance, 1, 1).asDiagonal();
+
+                            // Spherical Coordinates (1/distance, phi, theta)
+                            g.measurements.back().rGCc =
+                                inverseDistanceCartesianToSpherical(Eigen::Vector3f(g.post.bottom * distance));
+
+                            g.measurements.back().covariance = config.goal_projection_covariance.asDiagonal();
 
                             // Angular positions from the camera
                             g.screen_angular = cartesianToSpherical(g.post.bottom).tail<2>();
@@ -240,16 +243,17 @@ namespace module::vision {
                              *                  THROWOUTS                  *
                              ***********************************************/
 
-                            if (config.debug) {
-                                log<NUClear::DEBUG>("**************************************************");
-                                log<NUClear::DEBUG>("*                    THROWOUTS                   *");
-                                log<NUClear::DEBUG>("**************************************************");
-                            }
+
                             bool keep = true;  // if false then we will not consider this as a valid goal post
 
                             // If the goal is too far away, get rid of it!
                             if (distance > config.max_goal_distance) {
                                 keep = false;
+                                if (config.debug) {
+                                    log<NUClear::DEBUG>("**************************************************");
+                                    log<NUClear::DEBUG>("*                    THROWOUTS                   *");
+                                    log<NUClear::DEBUG>("**************************************************");
+                                }
                                 log<NUClear::DEBUG>(
                                     fmt::format("Goal discarded: goal distance ({}) > maximum_goal_distance ({})",
                                                 distance,
