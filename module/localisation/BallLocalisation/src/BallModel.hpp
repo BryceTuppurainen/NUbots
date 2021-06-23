@@ -33,6 +33,7 @@ namespace module::localisation {
     using message::input::Sensors;
     using message::support::FieldDescription;
     using utility::math::coordinates::cartesianToSpherical;
+    using utility::math::coordinates::inverseDistanceCartesianToSpherical;
 
     template <typename Scalar>
     class BallModel {
@@ -72,8 +73,9 @@ namespace module::localisation {
                                             const Eigen::Matrix<Scalar, 4, 4>& Hcw) const {
 
             const Eigen::Matrix<Scalar, 3, 1> rBWw(state[PX], state[PY], field.ball_radius);
-            const Eigen::Matrix<Scalar, 3, 1> rBCc_cart(Eigen::Affine3d(Hcw) * rBWw);
-            return cartesianToSpherical(rBCc_cart);
+            const Eigen::Matrix<Scalar, 3, 1> rBCc(Eigen::Affine3d(Hcw) * rBWw);
+
+            return inverseDistanceCartesianToSpherical(rBCc);
         }
 
         StateVec limit(const StateVec& state) const {
