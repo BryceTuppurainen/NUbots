@@ -98,56 +98,24 @@ namespace module::localisation {
                             auto m = goal_post.measurements[0];
 
                             // Check that the measurement is sane
-                            if (m.position.allFinite() && m.covariance.allFinite()) {
+                            if (m.rGCc.allFinite() && m.covariance.allFinite()) {
                                 auto filter_new_own = saved_filter;
 
                                 // Make a new candidate for the post
                                 auto candidate_own =
-                                    filter_new_own.measure(Eigen::Vector3d(m.position.cast<double>()),
+                                    filter_new_own.measure(Eigen::Vector3d(m.rGCc.cast<double>()),
                                                            Eigen::Matrix3d(m.covariance.cast<double>()),
                                                            getFieldPosition(goal_post, fd, 1),  // Own post
-                                                           goals.Hcw);                          //,
-                                                                                                //    m.type,
-                                                                                                //    fd);
+                                                           goals.Hcw);
 
                                 auto filter_new_opp = saved_filter;
 
                                 // Make a new candidate for the post
                                 auto candidate_opp =
-                                    filter_new_opp.measure(Eigen::Vector3d(m.position.cast<double>()),
+                                    filter_new_opp.measure(Eigen::Vector3d(m.rGCc.cast<double>()),
                                                            Eigen::Matrix3d(m.covariance.cast<double>()),
                                                            getFieldPosition(goal_post, fd, 0),  // Opp post
-                                                           goals.Hcw);                          //,
-                                //    m.type,
-                                //    fd);
-                                if (config.debug) {
-
-                                    Eigen::Vector3d state(filter.get());
-                                    Eigen::Transform<double, 3, Eigen::Affine> Hfw;
-                                    Hfw.translation() = Eigen::Matrix<double, 3, 1>(state.x(), state.y(), 0);
-                                    Hfw.linear() =
-                                        Eigen::AngleAxis<double>(state.z(), Eigen::Matrix<double, 3, 1>::UnitZ())
-                                            .toRotationMatrix();
-
-                                    const Eigen::Transform<double, 3, Eigen::Affine> Hcf(goals.Hcw
-                                                                                         * Hfw.inverse().matrix());
-
-                                    const Eigen::Matrix<double, 3, 1> rGCc_own(Hcf
-                                                                               * getFieldPosition(goal_post, fd, 1));
-                                    const Eigen::Matrix<double, 3, 1> rGCc_opp(Hcf
-                                                                               * getFieldPosition(goal_post, fd, 0));
-                                    log(fmt::format("Testing post {}",
-                                                    goal_post.side == Goal::Side::LEFT ? "left" : "Right"));
-                                    log(fmt::format("Candidate own {}", candidate_own));
-                                    log(fmt::format("State {}", state.transpose()));
-                                    log(fmt::format("Hcw {}\n", goals.Hcw));
-                                    log(fmt::format("Actual own post at {}",
-                                                    cartesianToSpherical(rGCc_own).transpose()));
-                                    log(fmt::format("Candidate opp {}", candidate_opp));
-                                    log(fmt::format("Actual opp post at {}",
-                                                    cartesianToSpherical(rGCc_opp).transpose()));
-                                    log(fmt::format("Measured post at {}", m.position.transpose()));
-                                }
+                                                           goals.Hcw);
 
                                 filter = candidate_own > candidate_opp ? filter_new_own : filter_new_opp;
                             }
@@ -175,8 +143,8 @@ namespace module::localisation {
                         // for (auto& m : goal.measurements) {
 
                         //     if (m.type == VisionGoal::MeasurementType::CENTRE) {
-                        //         if (m.position.allFinite() && m.covariance.allFinite()) {
-                        //             filter.measure(Eigen::Vector3d(m.position.cast<double>()),
+                        //         if (m.rGCc.allFinite() && m.covariance.allFinite()) {
+                        //             filter.measure(Eigen::Vector3d(m.rGCc.cast<double>()),
                         //                            Eigen::Matrix3d(m.covariance.cast<double>()),
                         //                            rGFf,
                         //                            goals.Hcw);
@@ -318,7 +286,7 @@ namespace module::localisation {
 // csv recording
 // {
 //     // clang-format off
-//     Eigen::Vector3d position(m.position.cast<double>());
+//     Eigen::Vector3d position(m.rGCc.cast<double>());
 //     std::cout << position(0) << "," << position(1) << "," << position(2);
 
 //     Eigen::Matrix3d cov(m.covariance.cast<double>());
