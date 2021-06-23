@@ -92,35 +92,10 @@ namespace module::localisation {
 
             const Eigen::Transform<Scalar, 3, Eigen::Affine> Hcf(Hcw * Hfw.inverse().matrix());
 
-                const Eigen::Matrix<Scalar, 3, 1> rGCc(Hcf * actual_position);
+            const Eigen::Matrix<Scalar, 3, 1> rGCc(Hcf * rGFf);
 
-                // Spherical Coordinates (1/distance, phi, theta)
-                return Eigen::Matrix<Scalar, 3, 1>(inverseDistanceCartesianToSpherical(rGCc));
-            }
-
-            // switch (FieldDescription::GoalpostType::Value(fd.dimensions.goalpost_type)) {
-            //     case FieldDescription::GoalpostType::CIRCLE: {
-            //         if (type == Goal::MeasurementType::LEFT_NORMAL || type == Goal::MeasurementType::RIGHT_NORMAL) {
-            //             const Eigen::Matrix<Scalar, 3, 1> rNCc(getCylindricalPostCamSpaceNormal(type, rGFf, Hcf,
-            //             fd)); const Eigen::Matrix<Scalar, 2, 1> angles(
-            //                 std::atan2(rNCc.y(), rNCc.x()),
-            //                 std::atan2(rNCc.z(), std::sqrt(rNCc.x() * rNCc.x() + rNCc.y() * rNCc.y())));
-            //             return angles;
-            //         }
-            //         break;
-            //     }
-            //     case FieldDescription::GoalpostType::RECTANGLE: {
-            //         if (type == Goal::MeasurementType::LEFT_NORMAL || type == Goal::MeasurementType::RIGHT_NORMAL) {
-            //             const Eigen::Matrix<Scalar, 3, 1> rNCc(getSquarePostCamSpaceNormal(type, rGFf, Hcf, fd));
-            //             const Eigen::Matrix<Scalar, 2, 1> angles(
-            //                 std::atan2(rNCc.y(), rNCc.x()),
-            //                 std::atan2(rNCc.z(), std::sqrt(rNCc.x() * rNCc.x() + rNCc.y() * rNCc.y())));
-            //             return angles;
-            //         }
-            //         break;
-            //     }
-            // }
-            // return Eigen::Matrix<Scalar, 2, 1>::Zero();
+            // Spherical Coordinates (1/distance, phi, theta)
+            return Eigen::Matrix<Scalar, 3, 1>(inverseDistanceCartesianToSpherical(rGCc));
         }
 
         StateVec limit(const StateVec& state) {
