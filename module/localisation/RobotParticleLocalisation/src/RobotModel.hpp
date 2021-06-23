@@ -91,10 +91,11 @@ namespace module::localisation {
 
             const Eigen::Transform<Scalar, 3, Eigen::Affine> Hcf(Hcw * Hfw.inverse().matrix());
 
-            // if (type == Goal::MeasurementType::CENTRE) {
-            const Eigen::Matrix<Scalar, 3, 1> rGCc(Hcf * rGFf);
-            return cartesianToSpherical(rGCc);
-            // }
+                const Eigen::Matrix<Scalar, 3, 1> rGCc(Hcf * actual_position);
+
+                // Spherical Coordinates (1/distance, phi, theta)
+                auto measurement = cartesianToSpherical(rGCc);
+                return Eigen::Matrix<Scalar, 3, 1>(Scalar(1) / measurement.x(), measurement.y(), measurement.z());
 
             // switch (FieldDescription::GoalpostType::Value(fd.dimensions.goalpost_type)) {
             //     case FieldDescription::GoalpostType::CIRCLE: {
