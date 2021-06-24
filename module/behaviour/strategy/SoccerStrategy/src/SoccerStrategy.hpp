@@ -143,7 +143,7 @@ namespace module::behaviour::strategy {
         void penaltyShootoutInitial(){};
         void penaltyShootoutSet();
         void penaltyShootoutReady(){};
-        void penaltyShootoutPlaying();
+        void penaltyShootoutPlaying(const message::localisation::Field& field, const message::localisation::Ball& ball);
         void penaltyShootoutFinished(){};
         void penaltyShootoutTimeout(){};
 

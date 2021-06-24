@@ -198,6 +198,7 @@ namespace module::behaviour::strategy {
                 try {
                     // Force penalty shootout mode if set in config
                     auto mode = cfg_.forcePenaltyShootout ? GameMode::PENALTY_SHOOTOUT : gameState.data.mode.value;
+                    log("On");
                     // Switch gamemode statemachine based on GameController state
                     switch (mode) {
                         case GameMode::PENALTY_SHOOTOUT:
@@ -329,18 +330,18 @@ namespace module::behaviour::strategy {
     }
 
     void SoccerStrategy::goalieWalk(const Field& field, const Ball& ball) {
-
+        log("Goalie Walk");
         // make a motionCommand to emit
         std::unique_ptr<MotionCommand> motionCommand;
 
         // time since the ball has been seen, in microseconds, current clock - time the ball was last measured
         float timeSinceBallSeen =
             std::chrono::duration_cast<std::chrono::microseconds>(NUClear::clock::now() - ballLastMeasured).count()
-            * 1e6;  // SUSS
+            * 1e-6;  // SUSS
 
         // timeSinceBallSeen < 1 (as stated in the cfg file SoccerStrategy.yaml)
         if (timeSinceBallSeen < cfg_.goalie_command_timeout) {
-
+            log<NUClear::WARN>("CAN SEE BALL");
             // position == Hfw
             Eigen::Affine2d position(field.position);
 
@@ -356,7 +357,7 @@ namespace module::behaviour::strategy {
                                     cfg_.goalie_max_translation_speed);
 
             float translationSpeed = std::fabs(fieldBearing) < cfg_.goalie_side_walk_angle_threshold ? tmp : 0;
-
+            log<NUClear::WARN>("TRANSLATION SPEED ", translationSpeed);
             Eigen::Affine2d cmd;
             cmd.linear() = Eigen::Rotation2Dd(rotationSpeed).matrix();
 
@@ -373,6 +374,7 @@ namespace module::behaviour::strategy {
         }
         // looking for the ball?? Do nothing??
         else {
+            log<NUClear::WARN>("CANT SEE BALL");
             motionCommand =
                 std::make_unique<MotionCommand>(utility::behaviour::DirectCommand(Eigen::Affine2d::Identity()));
         }
@@ -385,13 +387,14 @@ namespace module::behaviour::strategy {
                                          const message::support::FieldDescription& fieldDescription,
                                          const message::localisation::Field& field,
                                          const message::localisation::Ball& ball) {
+                                             log("PENALTY");
         switch (phase.value) {
             case Phase::INITIAL: penaltyShootoutInitial(); break;    // Happens at beginning
             case Phase::SET: penaltyShootoutSet(); break;            // Happens on beginning of each kick try
             case Phase::FINISHED: penaltyShootoutFinished(); break;  // Happens when penalty shootout all ends
             case Phase::TIMEOUT: penaltyShootoutTimeout(); break;
             case Phase::READY: penaltyShootoutReady(); break;      // Should not happen
-            case Phase::PLAYING: penaltyShootoutPlaying(); break;  // Either kicking or goalie
+            case Phase::PLAYING: penaltyShootoutPlaying(field, ball); break;  // Either kicking or goalie
             default: log<NUClear::WARN>("Unknown penalty shootout gamemode phase.");
         }
     }
@@ -421,11 +424,16 @@ namespace module::behaviour::strategy {
         hasKicked = false;
     }
 
-    void SoccerStrategy::penaltyShootoutPlaying() {
+    void SoccerStrategy::penaltyShootoutPlaying(const Field& field, const Ball& ball) {
         // Execute penalty kick script once if we haven't yet and are not goalie
+        log<NUClear::WARN>("PENALTY PLAYING");
         if (!hasKicked && team_kicking_off == GameEvents::Context::TEAM) {
             emit(std::make_unique<KickScriptCommand>(LimbID::LEFT_LEG, KickCommandType::PENALTY));
             hasKicked = true;
+        }
+        else if (team_kicking_off == GameEvents::Context::OPPONENT){
+            find({FieldTarget(FieldTarget::Target::BALL)});
+            goalieWalk(field, ball);
         }
     }
 
