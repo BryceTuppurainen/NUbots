@@ -49,7 +49,13 @@ def run(args, use_gdb, use_valgrind, **kwargs):
     env = os.environ
 
     # Make sure the log directory exists
-    os.makedirs("/home/nubots/NUbots/log/", exist_ok=True)
+    try:
+        os.makedirs("/home/nubots/NUbots/log/", exist_ok=True)
+    # The file exists, and but it's not a directory
+    except FileExistsError:
+        # Delete the file, then replace it with a directory
+        os.remove("/home/nubots/NUbots/log")
+        os.makedirs("/home/nubots/NUbots/log")
 
     # Add necessary ASAN environment variables
     if use_asan:
