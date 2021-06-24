@@ -53,9 +53,10 @@ def run(args, use_gdb, use_valgrind, **kwargs):
         os.makedirs("/home/nubots/NUbots/log/", exist_ok=True)
     # The file exists, and but it's not a directory
     except FileExistsError:
-        # Delete the file, then replace it with a directory
-        os.remove("/home/nubots/NUbots/log")
+        # Move the file to a temporary, make the new directory, then move the temporary file into the new directory
+        os.rename("/home/nubots/NUbots/log", "/home/nubots/NUbots/log.tmp")
         os.makedirs("/home/nubots/NUbots/log")
+        os.rename("/home/nubots/NUbots/log.tmp", "/home/nubots/NUbots/log/log")
 
     # Add necessary ASAN environment variables
     if use_asan:
