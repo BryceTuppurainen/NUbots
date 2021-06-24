@@ -34,7 +34,7 @@
 namespace utility::math::coordinates {
 
     template <typename T, typename U = typename T::Scalar>
-    inline Eigen::Matrix<U, 3, 1> sphericalToCartesian(const Eigen::MatrixBase<T>& sphericalCoordinates) {
+    [[nodiscard]] inline Eigen::Matrix<U, 3, 1> sphericalToCartesian(const Eigen::MatrixBase<T>& sphericalCoordinates) {
         double distance  = sphericalCoordinates.x();
         double cos_theta = std::cos(sphericalCoordinates.y());
         double sin_theta = std::sin(sphericalCoordinates.y());
