@@ -8,7 +8,7 @@ search_timeout_ms: 3000
 fractional_angular_update_threshold: 0.1
 
 #Time between saccades
-fixation_time_ms: 1500
+fixation_time_ms: 500
 
 #Time before replanning of search when already searching
 replan_angle_threshold: 0.5
@@ -30,12 +30,13 @@ searches:
     #Points in absolute angle (degrees) relative to the horizon and x-xis of robot
     #Searches right then left, crossing back through the front each time
     points:
-      - [0, 5]
-      - [5, 45]
-      - [10, 5]
-      - [0, 90]
-      - [-10, 5]
-      - [-5, 45]
+       - [0, 5]
+       - [20, 35]
+       - [35, 25]
+       - [0, 45]
+       - [-35, 25]
+       - [-20, 35]
+       - [0, 5]
   - search_type: "FIND_ADDITIONAL_OBJECTS"
     #Points for this search are relative to the padded bounding box containing the already visible objects
     points:
