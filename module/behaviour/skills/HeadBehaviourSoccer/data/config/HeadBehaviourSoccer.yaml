@@ -30,13 +30,13 @@ searches:
     #Points in absolute angle (degrees) relative to the horizon and x-xis of robot
     #Searches right then left, crossing back through the front each time
     points:
-       - [0, 5]
-       - [20, 35]
-       - [35, 25]
-       - [0, 45]
-       - [-35, 25]
-       - [-20, 35]
-       - [0, 5]
+       - [0, 35]
+       - [20, 65]
+       - [35, 55]
+       - [0, 75]
+       - [-35, 55]
+       - [-20, 65]
+       - [0, 35]
   - search_type: "FIND_ADDITIONAL_OBJECTS"
     #Points for this search are relative to the padded bounding box containing the already visible objects
     points:
@@ -49,9 +49,9 @@ searches:
   - search_type: "GOAL_SEARCH"
     points:
       #Searches left to right
-      - [-0.4,1]
-      - [0, 1]
-      - [0.4, 1]
+      - [-0.4,-2]
+      # - [0, -2]
+      - [0.4, -2]
   - search_type: "GOAL_LEFT"
     #Points for this search are relative to the padded bounding box containing the already visible objects
     points:
