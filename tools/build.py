@@ -29,10 +29,15 @@ def run(j, args, **kwargs):
         if exitcode != 0:
             exit(exitcode)
 
+    # To pass arguments to the ninja command you put them after "--"
+    # but "--"  isn't a valid argument for ninja, so we remove it here
+    if "--" in args:
+        args.remove("--")
+
     command = ["ninja", *args]
 
     if j:
         command.insert(1, "-j{}".format(j))
 
     # Return the exit code of ninja
-    exit(subprocess.call(command))
+    exit(subprocess.run(command).returncode)
