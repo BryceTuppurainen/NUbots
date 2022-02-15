@@ -185,10 +185,9 @@ namespace module::behaviour::tools {
                     case 'G':  // allows multiple gains to be edited at once
                         editGain();
                         break;
-                    case 'L':
+                    case '1':  // jumps to the first frame
                         activateFrame(0);
                         break;
-                        // activateFrame(0); - Resets from frame 9 to 1
                     case ':':  // lists commands
                         help();
                         break;
@@ -266,7 +265,7 @@ namespace module::behaviour::tools {
 
 
             // Each Command
-            const char* COMMANDS[] = {",", ".", "N", "I", " ", "T", "J", "G", "P", "S", "L"};  // How do u include L?
+            const char* COMMANDS[] = {",", ".", "N", "I", " ", "T", "J", "G", "P", "S", "1"};
 
             // Each Meaning
             const char* MEANINGS[] = {"Left a frame",
@@ -279,7 +278,7 @@ namespace module::behaviour::tools {
                                       "Change Gains",
                                       "Play",
                                       "Save",
-                                      "Reset"};
+                                      "Jump to First Frame"};
 
         // Prints commands and their meanings to the screen
         for (size_t i = 0; i < 10; i = i + 2) {
