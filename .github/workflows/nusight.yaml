@@ -33,7 +33,7 @@ jobs:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Get our yarn cache if it exists
       # See https://github.com/actions/cache/blob/master/examples.md#node---yarn
@@ -77,7 +77,7 @@ jobs:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Get our yarn cache if it exists
       # See https://github.com/actions/cache/blob/master/examples.md#node---yarn
@@ -121,7 +121,7 @@ jobs:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Get our yarn cache if it exists
       # See https://github.com/actions/cache/blob/master/examples.md#node---yarn
@@ -165,7 +165,7 @@ jobs:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Get our yarn cache if it exists
       # See https://github.com/actions/cache/blob/master/examples.md#node---yarn
