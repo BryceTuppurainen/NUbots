@@ -1,0 +1,311 @@
+<!-- HTML header for doxygen 1.9.3-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <meta name="generator" content="Doxygen 1.9.1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NUbots: Class Members - Variables</title>
+    <link href="tabs.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="dynsections.js"></script>
+    <!--START doxygen_awesome-->
+    <script type="text/javascript" src="styles/doxygen-awesome-darkmode-toggle.js"></script>
+    <script type="text/javascript">
+      DoxygenAwesomeDarkModeToggle.init();
+    </script>
+    <!--END doxygen_awesome-->
+    <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+ <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+    <link href="doxygen.css" rel="stylesheet" type="text/css" />
+    <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <a href="https://github.com/NUbots/NUbots" class="github-corner" title="View source on GitHub" target="_blank">
+      <svg
+        viewBox="0 0 250 250"
+        width="40"
+        height="40"
+        style="position: absolute; top: 0; border: 0; right: 0; z-index: 99"
+        aria-hidden="true"
+      >
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path
+          d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+          fill="currentColor"
+          style="transform-origin: 130px 106px"
+          class="octo-arm"
+        ></path>
+        <path
+          d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+          fill="currentColor"
+          class="octo-body"
+        ></path></svg></a
+    ><style>
+      .github-corner:hover .octo-arm {
+        animation: octocat-wave 560ms ease-in-out;
+      }
+      @keyframes octocat-wave {
+        0%,
+        100% {
+          transform: rotate(0);
+        }
+        20%,
+        60% {
+          transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+          transform: rotate(10deg);
+        }
+      }
+      @media (max-width: 500px) {
+        .github-corner:hover .octo-arm {
+          animation: none;
+        }
+        .github-corner .octo-arm {
+          animation: octocat-wave 560ms ease-in-out;
+        }
+      }
+    </style>
+      <div id="top">
+        <!-- do not remove this div, it is closed by doxygen! -->
+        <div id="titlearea">
+          <table cellspacing="0" cellpadding="0">
+            <tbody>
+              <tr id="projectrow">
+                <td id="projectlogo"><img alt="Logo" src="banner.png" /></td>
+                <td id="projectalign">
+                  <div id="projectname">
+                    NUbots
+                  </div>
+                  <div id="projectbrief">NUbots Main Codebase</div>
+                </td>
+              </tr>
+              <!--BEGIN FULL_SIDEBAR-->
+              <tr>
+                <td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+              </tr>
+              <!--END FULL_SIDEBAR-->
+            </tbody>
+          </table>
+        </div>
+        <!-- end header part -->
+      </div>
+    </div>
+  </body>
+</html>
+<!-- Generated by Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('functions_vars_p.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+&#160;
+
+<h3><a id="index_p"></a>- p -</h3><ul>
+<li>pack_builder
+: <a class="el" href="classmodule_1_1extension_1_1Director.html#af67f44bba504fa0f8872d6e04f3b4776">module::extension::Director</a>
+</li>
+<li>packet_error
+: <a class="el" href="structmodule_1_1platform_1_1OpenCR_1_1HardwareIO_1_1OpenCRState.html#a160a09890d34b9ba8b8ecc9166c996d7">module::platform::OpenCR::HardwareIO::OpenCRState</a>
+, <a class="el" href="structmodule_1_1platform_1_1OpenCR_1_1HardwareIO_1_1ServoState.html#a2ab55c4747eab87b87257970480391c2">module::platform::OpenCR::HardwareIO::ServoState</a>
+</li>
+<li>packet_queue
+: <a class="el" href="classmodule_1_1platform_1_1OpenCR_1_1HardwareIO.html#aa768c43bc5e4c40c5d75d71662e18860">module::platform::OpenCR::HardwareIO</a>
+</li>
+<li>packet_wait
+: <a class="el" href="classmodule_1_1platform_1_1OpenCR_1_1HardwareIO.html#a58f19b0d15954f1f93f5b3ccd116cb3f">module::platform::OpenCR::HardwareIO</a>
+</li>
+<li>packet_watchdog
+: <a class="el" href="classmodule_1_1platform_1_1OpenCR_1_1HardwareIO.html#a28d80e07d1cac02aa2b2d2fb4dbfd260">module::platform::OpenCR::HardwareIO</a>
+</li>
+<li>param_initial_values
+: <a class="el" href="classmodule_1_1support_1_1optimisation_1_1MultiPathOptimiser.html#a0fe9e4b13109ae8dc3aca409d758d169">module::support::optimisation::MultiPathOptimiser</a>
+, <a class="el" href="classmodule_1_1support_1_1optimisation_1_1RotationOptimiser.html#abaa17d270c19783fd262b784426e8ee1">module::support::optimisation::RotationOptimiser</a>
+, <a class="el" href="classmodule_1_1support_1_1optimisation_1_1StandOptimiser.html#af998e496a01901b0347eb931f18daccd">module::support::optimisation::StandOptimiser</a>
+, <a class="el" href="classmodule_1_1support_1_1optimisation_1_1StrafeOptimiser.html#ad6d41f9f23d380ccb151f85e565718ca">module::support::optimisation::StrafeOptimiser</a>
+, <a class="el" href="classmodule_1_1support_1_1optimisation_1_1WalkOptimiser.html#a9dab4a9b613bdbf5b58ef37d5bed7be2">module::support::optimisation::WalkOptimiser</a>
+</li>
+<li>param_limits
+: <a class="el" href="classmodule_1_1support_1_1optimisation_1_1MultiPathOptimiser.html#a44b658127045f412c5aae484990a61c6">module::support::optimisation::MultiPathOptimiser</a>
+, <a class="el" href="classmodule_1_1support_1_1optimisation_1_1RotationOptimiser.html#a53c65a41ea4bbbd7d33ea05f40d561fb">module::support::optimisation::RotationOptimiser</a>
+, <a class="el" href="classmodule_1_1support_1_1optimisation_1_1StandOptimiser.html#a3e9799646ab252d037972a2358ebeab7">module::support::optimisation::StandOptimiser</a>
+, <a class="el" href="classmodule_1_1support_1_1optimisation_1_1StrafeOptimiser.html#a97e972946ba7cf12cc768667ab863459">module::support::optimisation::StrafeOptimiser</a>
+, <a class="el" href="classmodule_1_1support_1_1optimisation_1_1WalkOptimiser.html#a13f90c577f60a543ae3d84491afcfcf4">module::support::optimisation::WalkOptimiser</a>
+</li>
+<li>params
+: <a class="el" href="classutility_1_1skill_1_1QuinticWalkEngine.html#a6c76b57dad2dc7ad6aaf4f46e30e5c01">utility::skill::QuinticWalkEngine</a>
+</li>
+<li>parser
+: <a class="el" href="classutility_1_1reactor_1_1StreamReactor.html#a635d4f7540db98594224ed880c6857b2">utility::reactor::StreamReactor&lt; T, Parser, TimeoutTicks, TimeoutPeriod &gt;</a>
+</li>
+<li>pascal_triangle
+: <a class="el" href="classutility_1_1motion_1_1splines_1_1Combination.html#aeb729f4414eb508d28187b8d848dd44c">utility::motion::splines::Combination</a>
+</li>
+<li>percentage
+: <a class="el" href="structmodule_1_1platform_1_1OpenCR_1_1HardwareIO_1_1Battery.html#a95ccf44799f073fcb1b3e5c5f36a355f">module::platform::OpenCR::HardwareIO::Battery</a>
+</li>
+<li>phase
+: <a class="el" href="classutility_1_1skill_1_1QuinticWalkEngine.html#ad39827d2db8c4d9143ff3f158902b3d8">utility::skill::QuinticWalkEngine</a>
+</li>
+<li>pivot_ball_velocity
+: <a class="el" href="structmodule_1_1planning_1_1PlanWalkPath_1_1Config.html#adc786a549bae88e7f61fbcd5371a2d15">module::planning::PlanWalkPath::Config</a>
+</li>
+<li>pivot_ball_velocity_x
+: <a class="el" href="structmodule_1_1planning_1_1PlanWalkPath_1_1Config.html#a10d2fbe7bdd1a17586a47311f6e9319a">module::planning::PlanWalkPath::Config</a>
+</li>
+<li>pivot_ball_velocity_y
+: <a class="el" href="structmodule_1_1planning_1_1PlanWalkPath_1_1Config.html#a4e2995002c2ed98893488009579fa1b7">module::planning::PlanWalkPath::Config</a>
+</li>
+<li>points
+: <a class="el" href="classutility_1_1motion_1_1splines_1_1SmoothSpline.html#aa4cd598ff213310551bb3981ba137edf">utility::motion::splines::SmoothSpline&lt; Scalar &gt;</a>
+</li>
+<li>port
+: <a class="el" href="structutility_1_1reactor_1_1StreamReactor_1_1TCPConnection.html#af89d1813b2e685482d98a58539bd8396">utility::reactor::StreamReactor&lt; T, Parser, TimeoutTicks, TimeoutPeriod &gt;::TCPConnection</a>
+</li>
+<li>position
+: <a class="el" href="structmodule_1_1purpose_1_1Soccer_1_1Config.html#a3531788a0bcc3a269ed43d2ec3768b4b">module::purpose::Soccer::Config</a>
+, <a class="el" href="structutility_1_1motion_1_1splines_1_1Waypoint.html#a318c5ac58e9668fc9a0384a70dedce86">utility::motion::splines::Waypoint&lt; Scalar &gt;</a>
+, <a class="el" href="structutility_1_1skill_1_1Frame_1_1Target.html#a4f54751162f3e522ba160ce022f94845">utility::skill::Frame::Target</a>
+</li>
+<li>position_d_gain
+: <a class="el" href="structmodule_1_1platform_1_1OpenCR_1_1HardwareIO_1_1ServoState.html#a8d43ee56250e07fe856e7883f7dae951">module::platform::OpenCR::HardwareIO::ServoState</a>
+</li>
+<li>position_i_gain
+: <a class="el" href="structmodule_1_1platform_1_1OpenCR_1_1HardwareIO_1_1ServoState.html#a61a1b33f7d80d3f451dbb0e45a5bded4">module::platform::OpenCR::HardwareIO::ServoState</a>
+</li>
+<li>position_p_gain
+: <a class="el" href="structmodule_1_1platform_1_1OpenCR_1_1HardwareIO_1_1ServoState.html#aa4ef188024cc964f5c53417b26a1feb3">module::platform::OpenCR::HardwareIO::ServoState</a>
+</li>
+<li>present_current
+: <a class="el" href="structmodule_1_1platform_1_1OpenCR_1_1HardwareIO_1_1ServoState.html#a1e64663f5450270a3027fa9364839259">module::platform::OpenCR::HardwareIO::ServoState</a>
+</li>
+<li>present_position
+: <a class="el" href="structmodule_1_1platform_1_1OpenCR_1_1HardwareIO_1_1ServoState.html#ab4d667fc067be834627affca5f99eda8">module::platform::OpenCR::HardwareIO::ServoState</a>
+, <a class="el" href="structmodule_1_1platform_1_1Webots_1_1ServoState.html#a0448d2f30960523b2b091146e7770c1d">module::platform::Webots::ServoState</a>
+</li>
+<li>present_pwm
+: <a class="el" href="structmodule_1_1platform_1_1OpenCR_1_1HardwareIO_1_1ServoState.html#ad1607495f9e1e934655e1a4add19a4a9">module::platform::OpenCR::HardwareIO::ServoState</a>
+</li>
+<li>present_velocity
+: <a class="el" href="structmodule_1_1platform_1_1OpenCR_1_1HardwareIO_1_1ServoState.html#aa4576dd22ff2b20f1c6a4ae0fd9324b1">module::platform::OpenCR::HardwareIO::ServoState</a>
+</li>
+<li>previous
+: <a class="el" href="classutility_1_1support_1_1ProgressBar.html#a2e36aeb10d142f2b7a25bbc2c2579fec">utility::support::ProgressBar</a>
+</li>
+<li>priority
+: <a class="el" href="structextension_1_1behaviour_1_1commands_1_1BehaviourTask.html#a8e005b5c3bcdb4b3dc44d7e02afe6868">extension::behaviour::commands::BehaviourTask</a>
+, <a class="el" href="structmodule_1_1extension_1_1component_1_1DirectorTask.html#a567b7ec479f0fab978fa2984453c6651">module::extension::component::DirectorTask</a>
+</li>
+<li>process_noise
+: <a class="el" href="structmodule_1_1localisation_1_1FieldLocalisation_1_1Config.html#aafebc0f5c8962cec8b52f9d7787bf7d6">module::localisation::FieldLocalisation::Config</a>
+</li>
+<li>process_noise_diagonal
+: <a class="el" href="classmodule_1_1localisation_1_1FieldModel.html#a2c226491a66f599e355dc62a72c94bba">module::localisation::FieldModel&lt; Scalar &gt;</a>
+</li>
+<li>processed
+: <a class="el" href="classmodule_1_1vision_1_1VisualMesh.html#a3b7f5004aa21b93143fb21f4d6d1a928">module::vision::VisualMesh</a>
+</li>
+<li>profile_acceleration
+: <a class="el" href="structmodule_1_1platform_1_1OpenCR_1_1HardwareIO_1_1ServoState.html#ad38f7dbfdc2ddd98c524d9b0efa52958">module::platform::OpenCR::HardwareIO::ServoState</a>
+</li>
+<li>profile_velocity
+: <a class="el" href="structmodule_1_1platform_1_1OpenCR_1_1HardwareIO_1_1ServoState.html#a5a1917e77fb6f3dd077074bc72b25362">module::platform::OpenCR::HardwareIO::ServoState</a>
+</li>
+<li>provider
+: <a class="el" href="structmodule_1_1extension_1_1Director_1_1OkSolution.html#a94731db2dedcf530f2f12b4199b7cec6">module::extension::Director::OkSolution</a>
+, <a class="el" href="structmodule_1_1extension_1_1Director_1_1Solution_1_1Option.html#a61177071594a7cb9747f15a71c99cee3">module::extension::Director::Solution::Option</a>
+</li>
+<li>provider_id
+: <a class="el" href="structmodule_1_1extension_1_1StateUpdate.html#a6f87c3f0352902b5b9c382675009e717">module::extension::StateUpdate</a>
+</li>
+<li>providers
+: <a class="el" href="structmodule_1_1extension_1_1component_1_1ProviderGroup.html#abd7076392778f38c24f3019ac0ebe247">module::extension::component::ProviderGroup</a>
+, <a class="el" href="classmodule_1_1extension_1_1Director.html#a5f196b09a6c1b4c27930a2d2d36f0be9">module::extension::Director</a>
+</li>
+<li>pushed
+: <a class="el" href="structmodule_1_1extension_1_1Director_1_1Solution.html#a6ba12a246a29d9cf9b130879de902bef">module::extension::Director::Solution</a>
+</li>
+<li>pushed_provider
+: <a class="el" href="structmodule_1_1extension_1_1component_1_1ProviderGroup.html#a16e942169115cc8e76cbc88964c84099">module::extension::component::ProviderGroup</a>
+</li>
+<li>pushing_task
+: <a class="el" href="structmodule_1_1extension_1_1component_1_1ProviderGroup.html#a02bf626376ee32f0b7d91d6554911b33">module::extension::component::ProviderGroup</a>
+</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Mon Apr 15 2024 08:50:32 for NUbots by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>
